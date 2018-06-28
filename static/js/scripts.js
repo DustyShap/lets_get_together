@@ -6,7 +6,6 @@ $(document).ready(function(){
 
   $("#input_form").submit(function(event){
     event.preventDefault();
-    $("#error_message").text("")
     $name = $("#participant_name").val().trim()
     temp_participant_list.push(cleanName($name))
     participant_list = removeDupes(temp_participant_list)
@@ -19,41 +18,46 @@ $(document).ready(function(){
         " value="+ $running_total + ">" + $running_total + "</option>");
     } else {
       $("#error_message").text('Duplicate!')
-      setTimeout(function(){$("#error_message").text('')}, 1000)
+      setTimeout(function(){$("#error_message").text('')}, 400)
     }
 
   })
 
   $("#generate_groups").click(function(event){
     event.preventDefault();
-    $("#results").empty()
-
-    $.ajax({
-      data:{
-        list_of_names: JSON.stringify(participant_list),
-        number_per_group: $("#number_per_group").val()
-      },
-      type:"POST",
-      url:'/generate_groups'
-    })
-    .done(function(data){
-      $("#generate_groups").text('Regenerate Groups')
-      displayGroups(data)
-    })
+    submitList(JSON.stringify(participant_list),$("#number_per_group").val())
   })
 
 
+  function submitList(list,number){
+        $("#results").empty()
+        $.ajax({
+          data:{
+            list_of_names: list,
+            number_per_group: number
+          },
+          type:"POST",
+          url:'/generate_groups'
+        })
+        .done(function(data){
+          $("#generate_groups").text('Regenerate Groups')
+          displayGroups(data)
+        })
+  }
+
+
   $("#file_input_button").click(function(){
-    upload_list = []
     var myFile = document.getElementById("fileinput").files[0];
     var reader = new FileReader();
     reader.readAsText(myFile);
     reader.onload = function(e) {
       var uploaded_list = reader.result.split("\n").join(",")
-      // upload_list.push(uploaded_list)
       var temp = new Array();
       temp = uploaded_list.split(",");
+      temp.pop()
       console.log(temp)
+      console.log($("#group_number").val())
+      submitList(JSON.stringify(temp),$("#group_number").val())
     }
   })
 

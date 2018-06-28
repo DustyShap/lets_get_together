@@ -24,21 +24,9 @@ def generate_groups():
     if request.method == "GET":
         return redirect(url_for('index'))
     participant_list = json.loads(request.form['list_of_names'])
-    print(type(participant_list))
     number_per_group = int(request.form['number_per_group'])
-    # processed_list = process_list(participant_list, number_per_group)
-    # print(process_list(participant_list, number_per_group))
-    # print(group(final_list,5))
     return jsonify(process_list(participant_list, number_per_group))
 
-@app.route("/file_upload", methods=["GET","POST"])
-def file_upload():
-    print(request)
-    file_name = request.form['file_name']
-    with open(file_name,'r') as f:
-        file_content = f.read()
-    print(file_content)
-    return 'none'
 
 # The process_list function accepts a list of participants and a group size
 # as arguments that are passed from the client.  A blank array
@@ -52,6 +40,7 @@ def file_upload():
 
 def process_list(participant_list, group_size):
     groups = []
+    print(group_size)
     new_list = list(set(participant_list))  # Remove duplicates
     random.shuffle(new_list)
     for i in range(0, len(new_list), group_size):
