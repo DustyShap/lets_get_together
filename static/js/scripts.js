@@ -26,22 +26,25 @@ $(document).ready(function(){
 
   $("#generate_groups").click(function(event){
     event.preventDefault();
-    $("#results").empty()
-
-    $.ajax({
-      data:{
-        list_of_names: JSON.stringify(participant_list),
-        number_per_group: $("#number_per_group").val()
-      },
-      type:"POST",
-      url:'/generate_groups'
-    })
-    .done(function(data){
-      $("#generate_groups").text('Regenerate Groups')
-      displayGroups(data)
-    })
+    submitList(JSON.stringify(participant_list),$("#number_per_group").val())
   })
+  
 
+  function submitList(list,number){
+      $("#results").empty()
+      $.ajax({
+        data:{
+          list_of_names: list,
+          number_per_group: number
+        },
+        type:"POST",
+        url:'/generate_groups'
+      })
+      .done(function(data){
+        $("#generate_groups").text('Regenerate Groups')
+        displayGroups(data)
+      })
+}
 
   function removeDupes(names) {
     let unique = {};
