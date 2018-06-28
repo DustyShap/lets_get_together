@@ -19,7 +19,7 @@ $(document).ready(function(){
         " value="+ $running_total + ">" + $running_total + "</option>");
     } else {
       $("#error_message").text('Duplicate!')
-
+      setTimeout(function(){$("#error_message").text('')}, 1000)
     }
 
   })
@@ -38,17 +38,7 @@ $(document).ready(function(){
     })
     .done(function(data){
       $("#generate_groups").text('Regenerate Groups')
-      for (var i=0; i < data.length; i++){
-        var group_count = i+1
-        var groups = data[i];
-        console.log(i)
-        var $result = $("<div class='result'><b>Group " + group_count + ":</b></div>");
-        for (var j=0; j < groups.length; j++){
-          // console.log(groups[j])
-          $result.append("<span>"+groups[j]+"</span>")
-        }
-        $("#results").append($result)
-      }
+      displayGroups(data)
     })
   })
 
@@ -67,4 +57,15 @@ $(document).ready(function(){
     return name.toLowerCase().substr(0,1).toUpperCase()+name.substr(1)
   }
 
+  function displayGroups(data){
+    for (var i=0; i < data.length; i++){
+      var group_count = i+1
+      var groups = data[i];
+      var $result = $("<div class='result'><b>Group " + group_count + ":</b></div>");
+      for (var j=0; j < groups.length; j++){
+        $result.append("<span>"+groups[j]+"</span>")
+      }
+      $("#results").append($result)
+    }
+  }
 })
