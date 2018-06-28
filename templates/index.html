@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block title %}Let's Get Together{% endblock %}
+{% block body %}
+  <div id='form_container'>
+    <div id='form_header'><b>Let's Get Together Group Generator</b></div>
+    <form id='input_form'>
+      <div id='participant_input_container'>
+        <input id='participant_name' name='participant_name' placeholder='Participant name' autocomplete='off' autofocus required>
+        <input id='submit_name' type='submit' value='Add Participant'>
+      </div>
+      <span id='error_message'></span>
+      <div id='group_number_container'>
+        <label for='number_per_group'>Number of people per group</label>
+        <select id='number_per_group'></select>
+      </div>
+      <div id='total_participants'>Entered Names: 0</div>
+      <button id='generate_groups' disabled>Generate Groups</button>
+    </form>
+    <div id='results'>
+      <!-- <div class='result'></div> -->
+    </div>
+  </div>
+{% endblock %}

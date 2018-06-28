@@ -1,0 +1,64 @@
+#main_container, #form_container #form_header, #form_container #input_form {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+@font-face {
+  font-family: btMono;
+  src: url("/static/fonts/bt_mono_regular-webfont.ttf"); }
+html {
+  width: 100%;
+  height: 100%; }
+
+body {
+  width: 100%;
+  height: 100%; }
+
+#main_container {
+  width: 100%;
+  height: 100%; }
+
+#form_container {
+  height: 90%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  background-color: #f6f6f6;
+  box-shadow: 0 0 20px #333; }
+  #form_container #form_header {
+    width: 100%;
+    height: 15%;
+    font-family: btMono;
+    font-size: 30px; }
+  #form_container #input_form {
+    height: 30%;
+    width: 100%;
+    flex-direction: column; }
+    #form_container #input_form #participant_input_container {
+      width: 100%;
+      height: 20%;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+    #form_container #input_form #error_message {
+      margin-bottom: 10px;
+      color: red; }
+    #form_container #input_form button, #form_container #input_form select {
+      margin: 10px; }
+    #form_container #input_form div {
+      margin: 5px; }
+  #form_container #results {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 10pt; }
+    #form_container #results .result {
+      min-width: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-direction: column;
+      margin: 10px; }
+
+/*# sourceMappingURL=styles.css.map */

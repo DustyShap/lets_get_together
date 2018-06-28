@@ -1,0 +1,83 @@
+
+%flex_center{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@font-face {
+    font-family: btMono;
+    src: url('/static/fonts/bt_mono_regular-webfont.ttf');
+}
+
+
+html {
+  width:100%;
+  height: 100%;
+}
+
+body{
+  width: 100%;
+  height: 100%;
+}
+
+#main_container{
+  width: 100%;
+  height: 100%;
+  @extend %flex_center;
+}
+
+#form_container{
+  height:90%;
+  width:50%;
+  // border:1px solid black;
+  display:flex;
+  flex-direction: column;
+  background-color: #f6f6f6;
+  box-shadow: 0 0 20px #333;
+  #form_header{
+    width:100%;
+    height:15%;
+    font-family: btMono;
+    font-size: 30px;
+    @extend %flex_center;
+  }
+  #input_form{
+    height:30%;
+    width:100%;
+    @extend %flex_center;
+    flex-direction: column;
+    #participant_input_container{
+      width:100%;
+      height:20%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #error_message{
+      margin-bottom:10px;
+      color:red;
+    }
+      button, select{
+        margin:10px;
+      }
+      div {
+        margin:5px;
+      }
+    }
+    #results{
+      width:100%;
+      height:50%;
+      display: flex;
+      flex-wrap: wrap;
+      font-size: 10pt;
+      .result{
+        min-width: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-direction:column;
+        margin:10px;
+      }
+    }
+  }
