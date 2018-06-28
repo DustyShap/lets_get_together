@@ -20,9 +20,6 @@ def generate_groups():
     participant_list = json.loads(request.form['list_of_names'])
     print(type(participant_list))
     number_per_group = int(request.form['number_per_group'])
-    # processed_list = process_list(participant_list, number_per_group)
-    # print(process_list(participant_list, number_per_group))
-    # print(group(final_list,5))
     return jsonify(process_list(participant_list, number_per_group))
 
 
