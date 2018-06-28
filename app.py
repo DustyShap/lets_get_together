@@ -40,7 +40,6 @@ def generate_groups():
 
 def process_list(participant_list, group_size):
     groups = []
-    print(group_size)
     new_list = list(set(participant_list))  # Remove duplicates
     random.shuffle(new_list)
     for i in range(0, len(new_list), group_size):
