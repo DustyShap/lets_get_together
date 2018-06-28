@@ -5,14 +5,14 @@ $(document).ready(function(){
   var participant_list = []
 
   $("#input_form").submit(function(event){
-    $("#error_message").text("")
-    $name = $("#participant_name").val().trim().toLowerCase();
     event.preventDefault();
-    temp_participant_list.push($name.substr(0,1).toUpperCase()+$name.substr(1))
-    participant_list = removeDups(temp_participant_list)
+    $("#error_message").text("")
+    $name = $("#participant_name").val().trim()
+    temp_participant_list.push(cleanName($name))
+    participant_list = removeDupes(temp_participant_list)
+    var $running_total = participant_list.length
     $("#generate_groups").removeAttr("disabled")
     $("#participant_name").val("")
-    var $running_total = participant_list.length
     $("#total_participants").html("Entered Names: " + $running_total);
     if($("#"+$running_total).length == 0){
       $("#number_per_group").append("<option id=" +$running_total +
@@ -53,7 +53,7 @@ $(document).ready(function(){
   })
 
 
-  function removeDups(names) {
+  function removeDupes(names) {
     let unique = {};
     names.forEach(function(i) {
       if(!unique[i]) {
@@ -61,6 +61,10 @@ $(document).ready(function(){
       }
     });
     return Object.keys(unique);
+  }
+
+  function cleanName(name){
+    return name.toLowerCase().substr(0,1).toUpperCase()+name.substr(1)
   }
 
 })

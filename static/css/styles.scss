@@ -71,6 +71,7 @@ body{
       display: flex;
       flex-wrap: wrap;
       font-size: 10pt;
+      border-top:1px solid black;
       .result{
         min-width: 50px;
         display: flex;
@@ -78,6 +79,9 @@ body{
         justify-content: flex-start;
         flex-direction:column;
         margin:10px;
+        overflow-y: auto;
+        overflow-y: -moz-scrollbars-vertical;
+        // overflow-x: hidden;
       }
     }
   }
