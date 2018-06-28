@@ -52,12 +52,15 @@ $(document).ready(function(){
     reader.readAsText(myFile);
     reader.onload = function(e) {
       var uploaded_list = reader.result.split("\n").join(",")
+      var temp_list = []
       var temp = new Array();
       temp = uploaded_list.split(",");
       temp.pop()
-      console.log(temp)
-      console.log($("#group_number").val())
-      submitList(JSON.stringify(temp),$("#group_number").val())
+      for (var i=0; i < temp.length; i++){
+        temp_list.push(cleanName(temp[i]))
+      }
+      temp_participant_list = removeDupes(temp_list)
+      submitList(JSON.stringify(temp_participant_list),$("#group_number").val())
     }
   })
 
