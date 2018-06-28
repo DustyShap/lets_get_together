@@ -43,6 +43,21 @@ $(document).ready(function(){
   })
 
 
+  $("#file_input_button").click(function(){
+    upload_list = []
+    var myFile = document.getElementById("fileinput").files[0];
+    var reader = new FileReader();
+    reader.readAsText(myFile);
+    reader.onload = function(e) {
+      var uploaded_list = reader.result.split("\n").join(",")
+      // upload_list.push(uploaded_list)
+      var temp = new Array();
+      temp = uploaded_list.split(",");
+      console.log(temp)
+    }
+  })
+
+
   function removeDupes(names) {
     let unique = {};
     names.forEach(function(i) {

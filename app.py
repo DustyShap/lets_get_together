@@ -3,8 +3,14 @@ from flask import (Flask, session,
 import os
 import json
 import random
+from werkzeug.utils import secure_filename
+
+UPLOAD_FOLDER = '/uploads/'
+ALLOWED_EXTENSIONS = set(['txt'])
 
 app = Flask(__name__)
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
 
 
 # Routes
@@ -25,6 +31,14 @@ def generate_groups():
     # print(group(final_list,5))
     return jsonify(process_list(participant_list, number_per_group))
 
+@app.route("/file_upload", methods=["GET","POST"])
+def file_upload():
+    print(request)
+    file_name = request.form['file_name']
+    with open(file_name,'r') as f:
+        file_content = f.read()
+    print(file_content)
+    return 'none'
 
 # The process_list function accepts a list of participants and a group size
 # as arguments that are passed from the client.  A blank array
