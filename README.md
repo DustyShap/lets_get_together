@@ -18,11 +18,6 @@ This program was written with Python 3.6.5
 3.Browse to [`localhost:5000`](http://127.0.0.1:5000/)   
 
 
-
-### Running tests
-You can run this project's unit tests by calling `python3 tests.py` on the command line.
-
-
 ### Application Instructions
 
 Input each name of an individual who has signed up for "Let's Get Together".
@@ -34,3 +29,9 @@ generate the random groups, which will displayed.  From this state, you
 can click `Regenerate Groups` to shuffle up the current list of participants.
 Also from this state, you can change the group size, as well as add more
 participants.  
+
+
+
+
+### Running tests
+You can run this project's unit tests by calling `python3 tests.py` on the command line.
