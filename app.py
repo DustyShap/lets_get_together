@@ -18,7 +18,6 @@ def generate_groups():
     if request.method == "GET":
         return redirect(url_for('index'))
     participant_list = json.loads(request.form['list_of_names'])
-    print(type(participant_list))
     number_per_group = int(request.form['number_per_group'])
     return jsonify(process_list(participant_list, number_per_group))
 
