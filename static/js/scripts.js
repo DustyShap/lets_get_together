@@ -23,6 +23,25 @@ $(document).ready(function(){
 
 //Functions
 
+
+$("#file_input_button").click(function(){
+    var myFile = document.getElementById("fileinput").files[0];
+    var reader = new FileReader();
+    reader.readAsText(myFile);
+    reader.onload = function(e) {
+      var uploaded_list = reader.result.split("\n").join(",")
+      var temp_list = []
+      var temp = new Array();
+      temp = uploaded_list.split(",");
+      temp.pop()
+      for (var i=0; i < temp.length; i++){
+        temp_list.push(cleanName(temp[i]))
+      }
+      temp_participant_list = removeDupes(temp_list)
+      submitList(JSON.stringify(temp_participant_list),$("#group_number").val())
+    }
+  })
+
 function cleanName(name){
   return name.toLowerCase().substr(0,1).toUpperCase()+name.substr(1)
 }
