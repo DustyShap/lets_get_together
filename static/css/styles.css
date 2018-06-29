@@ -53,15 +53,24 @@ body {
     display: flex;
     flex-wrap: wrap;
     font-size: 10pt;
-    border-top: 1px solid black; }
+    border-top: 1px solid black;
+    overflow-y: auto;
+    overflow-y: -moz-scrollbars-vertical; }
     #form_container #results .result {
       min-width: 50px;
       display: flex;
       align-items: center;
       justify-content: flex-start;
       flex-direction: column;
-      margin: 10px;
-      overflow-y: auto;
-      overflow-y: -moz-scrollbars-vertical; }
+      margin: 10px; }
+
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 10px; }
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5); }
 
 /*# sourceMappingURL=styles.css.map */
