@@ -22,6 +22,7 @@ def generate_groups():
     return jsonify(process_list(participant_list, number_per_group))
 
 
+
 # The process_list function accepts a list of participants and a group size
 # as arguments that are passed from the client.  A blank array
 # that will eventually be returned by that function is declared, and

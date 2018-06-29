@@ -19,6 +19,26 @@ $(document).ready(function(){
     submitList(JSON.stringify(participant_list), $("#number_per_group").val())
   })
 
+  $("#delete_user").click(function(event){
+    event.preventDefault();
+    var $user_to_delete = $("#user_to_delete").val();
+    if ($user_to_delete){
+      deleteUser($user_to_delete)
+      $("#total_participants").html("Entered Names: " + participant_list.length);
+    }
+  })
+
+
+  function deleteUser(name){
+    var index = participant_list.indexOf(name);
+    var index2 = temp_participant_list.indexOf(name);
+    $("#"+participant_list.length).remove();
+    participant_list.splice( index, 1 );
+    temp_participant_list.splice( index, 1);
+    $("#user_to_delete option[value="+name+"]").remove();
+    submitList(JSON.stringify(participant_list), $("#number_per_group").val())
+  }
+
 
   function cleanName(name){
     return name.toLowerCase().substr(0,1).toUpperCase()+name.substr(1)
@@ -50,6 +70,7 @@ $(document).ready(function(){
 
 
   function submitList(list,number){
+      $("#user_to_delete").empty()
       $("#results").empty()
       $.ajax({
         data:{
@@ -68,11 +89,13 @@ $(document).ready(function(){
 
   function displayGroups(data){
     for (var i=0; i < data.length; i++){
+
       var group_count = i+1
       var groups = data[i];
       var $result = $("<div class='result'><b>Group " + group_count + ":</b></div>");
       for (var j=0; j < groups.length; j++){
         $result.append("<span>"+groups[j]+"</span>")
+        $("#user_to_delete").append("<option value=" + groups[j] + ">" + groups[j] + "</option>")
       }
       $("#results").append($result)
     }
