@@ -6,7 +6,7 @@ $(document).ready(function(){
   $("#input_form").submit(function(event){
     event.preventDefault();
     $("#error_message").text("")
-    var $name = cleanName($("#participant_name").val().trim())
+    var $name = cleanName($("#participant_name").val().trim().toLowerCase())
     participant_list.push($name)
     participant_list = removeDupes(participant_list)
     participantCounter(participant_list)
@@ -24,7 +24,7 @@ $(document).ready(function(){
 //Functions
 
 function cleanName(name){
-  return name.toLowerCase().substr(0,1).toUpperCase()+name.substr(1)
+  return name.substr(0,1).toUpperCase()+name.substr(1)
 }
 
 
