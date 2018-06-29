@@ -7,7 +7,7 @@ $(document).ready(function(){
   $("#input_form").submit(function(event){
     event.preventDefault();
     $("#error_message").text("")
-    participant_list.push(cleanName($("#participant_name").val().trim()))
+    participant_list.push(cleanName($("#participant_name").val().trim().toLowerCase()))
     participant_list = removeDupes(participant_list)
     runningTotal(participant_list)
     $("#participant_name").val("")
