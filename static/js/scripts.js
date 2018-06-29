@@ -7,28 +7,47 @@ $(document).ready(function(){
   $("#input_form").submit(function(event){
     event.preventDefault();
     $("#error_message").text("")
-    $name = $("#participant_name").val().trim()
-    temp_participant_list.push(cleanName($name))
+    temp_participant_list.push(cleanName($("#participant_name").val().trim()))
     participant_list = removeDupes(temp_participant_list)
-    var $running_total = participant_list.length
-    $("#generate_groups").removeAttr("disabled")
+    runningTotal(participant_list)
     $("#participant_name").val("")
-    $("#total_participants").html("Entered Names: " + $running_total);
-    if($("#"+$running_total).length == 0){
-      $("#number_per_group").append("<option id=" +$running_total +
-        " value="+ $running_total + ">" + $running_total + "</option>");
-    } else {
-      $("#error_message").text('Duplicate!')
-      setTimeout(function(){$("#error_message").text('')}, 1000)
-    }
-
+    $("#generate_groups").removeAttr("disabled")
   })
 
   $("#generate_groups").click(function(event){
     event.preventDefault();
-    submitList(JSON.stringify(participant_list),$("#number_per_group").val())
+    submitList(JSON.stringify(participant_list), $("#number_per_group").val())
   })
-  
+
+
+  function cleanName(name){
+    return name.toLowerCase().substr(0,1).toUpperCase()+name.substr(1)
+  }
+
+
+  function removeDupes(list) {
+    let unique = {};
+    list.forEach(function(i) {
+      if(!unique[i]) {
+        unique[i] = true;
+      }
+    });
+    return Object.keys(unique);
+  }
+
+
+  function runningTotal(list){
+    var total = list.length;
+    $("#total_participants").html("Entered Names: " + total);
+    if($("#"+total).length == 0){
+      $("#number_per_group").append("<option id=" + total +
+        " value="+ total + ">" + total + "</option>");
+    } else {
+      $("#error_message").text("Duplicate!")
+      setTimeout(function(){$("#error_message").text("")}, 1000)
+    }
+  }
+
 
   function submitList(list,number){
       $("#results").empty()
@@ -38,27 +57,14 @@ $(document).ready(function(){
           number_per_group: number
         },
         type:"POST",
-        url:'/generate_groups'
+        url:"/generate_groups"
       })
       .done(function(data){
         $("#generate_groups").text('Regenerate Groups')
         displayGroups(data)
       })
-}
-
-  function removeDupes(names) {
-    let unique = {};
-    names.forEach(function(i) {
-      if(!unique[i]) {
-        unique[i] = true;
-      }
-    });
-    return Object.keys(unique);
   }
 
-  function cleanName(name){
-    return name.toLowerCase().substr(0,1).toUpperCase()+name.substr(1)
-  }
 
   function displayGroups(data){
     for (var i=0; i < data.length; i++){
@@ -71,4 +77,6 @@ $(document).ready(function(){
       $("#results").append($result)
     }
   }
+
+
 })

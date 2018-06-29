@@ -20,15 +20,9 @@ This program was written with Python 3.6.5
 
 ### Application Instructions
 
-Input each name of an individual who has signed up for "Let's Get Together".
-After each name, click `Add Participant` to add that person to the list.  
-A note, that duplicate names will not be counted.  Once you have added all of
-the names who have signed up, choose the number of people per group from the
-dropdown. Once the group size has been chosen, click `Generate Groups` to
-generate the random groups, which will displayed.  From this state, you
-can click `Regenerate Groups` to shuffle up the current list of participants.
-Also from this state, you can change the group size, as well as add more
-participants.  
+Input the name of each individual who has signed up for "Let's Get Together,"
+and click `Add Participant` to add that person to the list.  
+Duplicate names will not be counted.  Once you have added all of the names, choose the group size from the dropdown. Click `Generate Groups` and randomly sorted groups of your selected size will be displayed.  If you wish to reshuffle the groups, click `Regenerate Groups` and new groups of the same size will be displayed. Group size can be changed, and additional names can be added as well.  
 
 
 
