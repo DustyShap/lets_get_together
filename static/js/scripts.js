@@ -1,18 +1,18 @@
 $(document).ready(function(){
 
-
-  var temp_participant_list = []
+  
   var participant_list = []
 
   $("#input_form").submit(function(event){
     event.preventDefault();
     $("#error_message").text("")
-    temp_participant_list.push(cleanName($("#participant_name").val().trim()))
-    participant_list = removeDupes(temp_participant_list)
+    participant_list.push(cleanName($("#participant_name").val().trim()))
+    participant_list = removeDupes(participant_list)
     runningTotal(participant_list)
     $("#participant_name").val("")
     $("#generate_groups").removeAttr("disabled")
   })
+
 
   $("#generate_groups").click(function(event){
     event.preventDefault();
