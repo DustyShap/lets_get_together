@@ -1,14 +1,14 @@
 $(document).ready(function(){
 
 
-  var temp_participant_list = []
+
   var participant_list = []
 
   $("#input_form").submit(function(event){
     event.preventDefault();
     $("#error_message").text("")
-    temp_participant_list.push(cleanName($("#participant_name").val().trim()))
-    participant_list = removeDupes(temp_participant_list)
+    participant_list.push(cleanName($("#participant_name").val().trim()))
+    participant_list = removeDupes(participant_list)
     runningTotal(participant_list)
     $("#participant_name").val("")
     $("#generate_groups").removeAttr("disabled")
@@ -31,10 +31,8 @@ $(document).ready(function(){
 
   function deleteUser(name){
     var index = participant_list.indexOf(name);
-    var index2 = temp_participant_list.indexOf(name);
     $("#"+participant_list.length).remove();
     participant_list.splice( index, 1 );
-    temp_participant_list.splice( index, 1);
     $("#user_to_delete option[value="+name+"]").remove();
     submitList(JSON.stringify(participant_list), $("#number_per_group").val())
   }
