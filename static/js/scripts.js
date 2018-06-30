@@ -6,8 +6,8 @@ $(document).ready(function(){
   $("#input_form").submit(function(event){
     event.preventDefault();
     $("#error_message").text("")
-    var $name = cleanName($("#participant_name").val().trim().toLowerCase())
-    participant_list.push($name)
+    var $name = $("#participant_name").val().trim().toLowerCase()
+    participant_list.push(cleanName($name))
     participant_list = removeDupes(participant_list)
     participantCounter(participant_list)
     $("#participant_name").val("")
