@@ -23,18 +23,21 @@ $(document).ready(function(){
 
   $("#delete_user").click(function(event){
     event.preventDefault();
-    console.log(participant_list)
-    var $name_to_delete = $("#user_to_delete").val().trim().toLowerCase()
-    var index = participant_list.indexOf(cleanName($name_to_delete))
+    deleteUser($("#user_to_delete").val().trim().toLowerCase())
+  })
+  //Functions
+
+
+  function deleteUser(name){
+    var $name_to_delete = cleanName(name)
+    var index = participant_list.indexOf($name_to_delete)
     if (index !== -1){
       participant_list.splice(index,1);
       submitList(JSON.stringify(participant_list), $("#number_per_group").val())
     } else {
       alert("Name doesn't exist")
     }
-  })
-  //Functions
-
+  }
   function cleanName(name){
     return name.substr(0,1).toUpperCase()+name.substr(1)
   }
