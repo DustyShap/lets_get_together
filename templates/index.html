@@ -15,8 +15,10 @@
         <label for='number_per_group'>Number of people per group</label>
         <select id='number_per_group'></select>
       </div>
-      <div id='total_participants'>Entered Names: 0</div>
+      <div id='total_participants' hidden>Entered Names: 0</div>
       <button id='generate_groups' disabled>Generate Groups</button>
+      <input id='user_to_delete' type='text' pattern="[a-zA-Z ]{1,}" title="Letters Only!">
+      <button id='delete_user'>Delete User</button>
     </form>
     <div id='results'></div>
   </div>
