@@ -30,7 +30,12 @@ class BasicTests(unittest.TestCase):
 class FileTests(unittest.TestCase):
     def setUp(self):
         self.test_data = open(MY_DATA_PATH).read().splitlines()
-        self.file_name_total = len(self.test_data)
+
+    def test_is_data_a_list(self):
+        self.assertTrue(isinstance(self.test_data,list))
+
+    def test_if_file_exists(self):
+        self.assertTrue(self.test_data)
 
     def test_process_file(self):
         self.assertNotEqual(len(process_list(self.test_data,2)),
@@ -38,9 +43,6 @@ class FileTests(unittest.TestCase):
 
     def test_group_numbers(self):
         pass
-
-
-
 
 
 
