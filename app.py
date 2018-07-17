@@ -41,5 +41,6 @@ def process_list(participant_list, group_size):
     return groups
 
 
+
 if __name__ == '__main__':
     app.run(debug=True)
