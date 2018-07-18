@@ -17,6 +17,7 @@ if __name__ == '__main__':
             for name in group:
                 print(name)
             count += 1
+            print("-------------------")
     except:
         print("-----------------------")
         print('File doesnt exist')
