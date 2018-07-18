@@ -21,6 +21,16 @@ $(document).ready(function(){
   })
 
 
+  $("#submit_text_file").click(function(event){
+    event.preventDefault();
+    var names = document.getElementById("text_file").files[0]
+    var reader = new FileReader();
+    reader.readAsText(names)
+    reader.onload = function(){
+      console.log(reader.result.split("\n"))
+    }
+  })
+
 //Functions
 
 function cleanName(name){
