@@ -20,6 +20,16 @@ $(document).ready(function(){
     submitList(JSON.stringify(participant_list), $("#number_per_group").val())
   })
 
+  $("#submit_file").click(function(event){
+    event.preventDefault();
+    var fileNames = document.getElementById("name_file").files[0]
+    var reader = new FileReader();
+    reader.readAsText(fileNames)
+    reader.onload = function(e){
+      console.log(reader.result)
+    }
+
+  })
 
 //Functions
 
