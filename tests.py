@@ -5,8 +5,6 @@ from app import app, generate_groups, process_list
 test_list = ['John', 'Jill', 'James', 'Jessica', 'Jackie']
 test_list2 = ['Bob', 'Bill', 'Beth', 'Brittney', 'Becky']
 
-THIS_DIR = os.path.dirname(os.path.abspath(__file__))
-MY_DATA_PATH = os.path.join(THIS_DIR, 'names.txt')
 
 class BasicTests(unittest.TestCase):
     def test_main_page(self):
